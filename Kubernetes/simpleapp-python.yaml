@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simpleapp-python
+  labels:
+    name: simpleapp-python
+spec:
+  containers:
+  - name: simpleapp-python-container
+    image: jefersonrezk/simpleapp-python:v1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    envFrom:
+      - configMapRef:
+          name: simpleapp-cm
