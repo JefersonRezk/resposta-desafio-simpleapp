@@ -10,7 +10,7 @@ Python versão 3.8 ou posterior;
 Docker em execução localmente; 
 Um IDE ou um editor de texto para editar arquivos. Usaremos o Visual Studio Code.
 
-##Exemplo de aplicação 
+1-Exemplo de aplicação 
 Vamos criar um aplicativo Python simples usando a estrutura Flask que usaremos como nosso exemplo. Crie um diretório em sua máquina local nomeado python-dockere siga as etapas abaixo para criar um servidor web simples.
 
 cd /path/to/python-docker
@@ -29,7 +29,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, Docker!'
 
-###Teste o aplicativo 
+2-Teste o aplicativo 
 Vamos iniciar nosso aplicativo e verificar se ele está funcionando corretamente. Abra seu terminal e navegue até o diretório de trabalho que você criou.
 
 cd /path/to/python-docker
@@ -43,7 +43,7 @@ Volte para o terminal em que nosso servidor está sendo executado e você verá 
 
 127.0.0.1 - - [22/Sep/2020 11:07:41] "GET / HTTP/1.1" 200 -
 
-####Criação de um Dockerfile para Python
+3-Criação de um Dockerfile para Python
 Agora que nosso aplicativo está funcionando corretamente, vamos dar uma olhada na criação de um Dockerfile.
 
 Em seguida, precisamos adicionar uma linha em nosso Dockerfile que informe ao Docker qual imagem base gostaríamos de usar para nosso aplicativo.
@@ -93,13 +93,13 @@ RUN pip install pip
 CMD [ "python", "./app.py" ]
 
 
-#####Enviando a imagem para  DockerHub 
+4-Enviando a imagem para  DockerHub 
 docker image push jefersonrezk/simpleapp-python:v1 
 docker image push jefersonrezk/simpleapp-python:latest 
 
 ## Criação e aplicação dos arquivos yaml para o Kubernetes
 
-#Services (simpleapp-svc.yaml)
+1-Services (simpleapp-svc.yaml)
 
 apiVersion: v1
 kind: Service
@@ -116,7 +116,7 @@ spec:
 kubectl apply -f simpleapp-svc.yaml
 
 
-##Configmap (simpleapp-cm.yaml)
+2-Configmap (simpleapp-cm.yaml)
 
 apiVersion: v1
 kind: ConfigMap
@@ -128,7 +128,7 @@ data:
 kubectl apply -f simpleapp-cm.yaml
 
 
-###Ingress (simleapp-ingress.yaml)
+3-Ingress (simleapp-ingress.yaml)
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -624,17 +624,3 @@ spec:
 Criar Serviço e Entrada.
 
 kubectl apply -f k8s/3-example.yaml
-
-
-
-
-
-
-
-
-
-
-
-
-
-# desafio-simpleapp-python
